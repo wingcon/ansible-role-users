@@ -84,3 +84,11 @@ the `remove` parameter, and force removal of files with the `force` parameter.
         uid: 1003
         remove: yes
         force: yes
+
+# Dependenices
+
+None.
+
+# License
+
+MIT
