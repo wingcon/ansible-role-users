@@ -1,6 +1,7 @@
 ---
 
 galaxy_info:
+  role_name: users
   author: unxnn
   description: User management role
   company: none
