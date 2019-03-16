@@ -68,6 +68,20 @@ Example:
       - name: developers
         gid: 20000
 
+Generating a password hash:
+
+    # On Debian/Ubuntu (via the package "whois")
+    mkpasswd --method=SHA-512 --rounds=4096
+    
+    # OpenSSL (note: this will only make md5crypt.  While better than plantext it should not be     considered fully secure)
+    openssl passwd -1
+    
+    # Python (change password and salt values)
+    python -c "import crypt, getpass, pwd; print crypt.crypt('password', '\$6\$SALT\$')"
+    
+    # Perl (change password and salt values)
+    perl -e 'print crypt("password","\$6\$SALT\$") . "\n"'
+
 ## Deleting users
 
 The `users_deleted` variable contains a list of users who should no longer be

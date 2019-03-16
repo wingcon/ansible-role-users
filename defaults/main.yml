@@ -1,5 +1,4 @@
 ---
-
 # Create a group for every user and make that their primary group
 users_create_per_user_group: true
 # If we're not creating a per-user group, then this is the group all users

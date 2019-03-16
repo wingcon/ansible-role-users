@@ -1,5 +1,4 @@
 ---
-
 - name: Allow admin group sudo without password
   lineinfile:
     path: /etc/sudoers
