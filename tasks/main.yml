@@ -20,6 +20,16 @@
   when: "'group' not in item and users_create_per_user_group"
   tags: ["users", "configuration"]
 
+- name: Create custom home folders
+  file:
+    path: "{{ item.home }}"
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+  with_items: "{{ users }}"
+  tags: ["users", "configuration"]
+
 - name: User creation
   user:
     name: "{{ item.username }}"
