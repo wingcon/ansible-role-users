@@ -15,7 +15,6 @@ Role to manage users on a system.
   specified for the user.
 * `users_create_homedirs` (default: true) - create home directories for new
   users. Set this to false if you manage home directories separately.
-* `users_home_directory` (default: /home) - path to users home directory.
 
 ## Creating users
 
@@ -27,8 +26,7 @@ The following attributes are required for each user:
 
 * `username` - The user's username.
 * `name` - The full name of the user (gecos field).
-* `home` - The home directory of the user to create (optional, defaults to
-  {{ users_home_directory }}/username).
+* `home` - The home directory of the user to create (optional, defaults to /home/username).
 * `uid` - The numeric user id for the user (optional). This is required for uid consistency
   across systems.
 * `gid` - The numeric group id for the group (optional). Otherwise, the

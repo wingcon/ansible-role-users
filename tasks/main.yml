@@ -41,7 +41,7 @@
     password: "{{ item.password if item.password is defined else '!' }}"
     comment: "{{ item.name if item.name is defined else '' }}"
     uid: "{{ item.uid | default(omit) }}"
-    home: "{{ item.home | default('{{ users_home_directory }}/' + item.username)  }}"
+    home: "{{ item.home | default('/home/' + item.username)  }}"
     createhome: "{{ 'yes' if users_create_homedirs else 'no' }}"
     generate_ssh_key: "{{ item.generate_ssh_key | default(omit)  }}"
     update_password: "{{ item.update_password | default(omit) }}"
@@ -52,7 +52,7 @@
   authorized_key:
     user: "{{ item.0.username }}"
     key: "{{ item.1 }}"
-    path: "{{ item.0.home | default('{{ users_home_directory }}/' + item.0.username)  }}/.ssh/authorized_keys"
+    path: "{{ item.0.home | default('/home/' + item.0.username)  }}/.ssh/authorized_keys"
   with_subelements:
     - "{{ users }}"
     - ssh_key
@@ -62,7 +62,7 @@
 - name: Setup user profiles
   blockinfile:
     block: "{{ item.profile }}"
-    dest: "{{ item.home | default('{{ users_home_directory }}/' + item.username) }}/.profile"
+    dest: "{{ item.home | default('/home/' + item.username) }}/.profile"
     owner: "{{ item.username }}"
     group: "{{ item.group | default(item.username if users_create_per_user_group else users_group) }}"
     mode: 0644
