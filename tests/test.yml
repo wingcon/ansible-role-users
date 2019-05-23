@@ -29,7 +29,7 @@
         uid: 2223
         groups: [users, bin]
         shell: /bin/sh
-        home: /home/otherdirectory/
+        home: /home/otherdirectory
         profile: |
           alias ll='ls -ahl'
           alias cp='cp -iv'
@@ -74,7 +74,7 @@
         uid: 2225
         groups: [users, bin]
         shell: /bin/sh
-        home: /home/otherdirectory1/
+        home: /home/otherdirectory1
         profile: |
           alias ll='ls -ahl'
           alias cp='cp -iv'
