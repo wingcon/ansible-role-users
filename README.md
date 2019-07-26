@@ -49,6 +49,7 @@ In addition, the following items are optional for each user:
 * `shell` - The user's shell. This defaults to /bin/bash. The default is
   configurable using the users_default_shell variable if you want to give all
   users the same shell, but it is different than /bin/bash.
+* `is_system_user` -  Set to `True` to create system user.
 
 Example:
 
