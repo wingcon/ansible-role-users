@@ -100,3 +100,13 @@
           - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDUMN9/Hqi2Jgcbvx8mv4XuXLw39FUkm7CJiLlxeQrE+ridF4RErhbT5nR+F3rGTKsiBkrts3UDzvqmk2YvRoPFlyHSHGD8d1Tgncwcj9FNxGqZadlptJPQbyTYyHrDzmnhk3zU/wwJBip7frVctl1D98dtR9/M+X1zRgbT4Gr0o2iSO5cRykRrKTz0+/rQ4Z7XQ+PZmQhO4e5DeSzEzn5NDATAdDNvwfeuNYUOY2MOGIzdlpApD8E7baxw/LOkCPJtAp3Sc8KrMhgF1L7A1g2ZI7+7jq1GXkb7oBYJEczuQsaW9Mf40Y3piAutPWDp/cAcWqBWVjmA101JooJqDdE3 noone@.example.com"
   roles:
     - ansible-role-users
+
+- hosts: localhost
+  remote_user: root
+  vars:
+    users:
+      - name: Ansible Test User6
+        username: ansibletestuser6
+        is_system_user: True
+  roles:
+    - ansible-role-users
