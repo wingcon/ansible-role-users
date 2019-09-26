@@ -1,4 +1,9 @@
 ---
+- name: Check visudo exists
+  stat:
+      path: /usr/sbin/visudo
+  register: visudo
+
 - name: Allow admin group sudo without password
   lineinfile:
     path: /etc/sudoers
@@ -6,6 +11,7 @@
     regexp: '^%admin ALL='
     line: '%admin ALL=(ALL) NOPASSWD: ALL'
     validate: '/usr/sbin/visudo -cf %s'
+  when: visudo.stat.exists
   tags: ["users", "groups", "configuration"]
 
 - name: Creating groups
