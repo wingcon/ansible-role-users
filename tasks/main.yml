@@ -9,13 +9,16 @@
   tags: ["users", "groups", "configuration"]
 
 - name: Creating groups
-  group: name="{{ item.name }}" gid="{{ item.gid | default(omit) }}"
+  group:
+    name: "{{ item.name }}"
+    gid: "{{ item.gid | default(omit) }}"
   with_items: "{{ groups_to_create }}"
   tags: ["users", "groups", "configuration"]
 
 - name: Per-user group creation
-  group: name="{{ item.username }}"
-         gid="{{ item.gid | default(item.uid) | default(omit) }}"
+  group:
+    name: "{{ item.username }}"
+    gid: "{{ item.gid | default(item.uid) | default(omit) }}"
   with_items: "{{ users }}"
   when: "'group' not in item and users_create_per_user_group"
   tags: ["users", "configuration"]
@@ -43,7 +46,7 @@
   authorized_key:
     user: "{{ item.0.username }}"
     key: "{{ item.1 }}"
-    path: "{{ item.0.home | default('/home/' + item.0.username)  }}/.ssh/authorized_keys"
+    path: "{{ item.0.home | default('/home/' + item.0.username) }}/{{ authorized_keys_file }}"
   with_subelements:
     - "{{ users }}"
     - ssh_key
@@ -71,7 +74,9 @@
   tags: ["users", "configuration"]
 
 - name: Deleted per-user group removal
-  group: name="{{ item.username }}" state=absent
+  group:
+    name: "{{ item.username }}"
+    state: absent
   with_items: "{{ users_deleted }}"
   when: users_create_per_user_group
   tags: ["users", "configuration"]
