@@ -98,8 +98,8 @@ the `remove` parameter, and force removal of files with the `force` parameter.
     users_deleted:
       - username: bar
         uid: 1003
-        remove: yes
-        force: yes
+        remove: true
+        force: true
 
 # Dependenices
 
